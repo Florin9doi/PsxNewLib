@@ -61,4 +61,19 @@ public:
 
 		return PsxController::begin ();
 	}
+
+	virtual void setup() {
+		att.config (OUTPUT, HIGH);
+		cmd.config (OUTPUT, HIGH);
+		clk.config (OUTPUT, HIGH);
+		dat.config (INPUT, HIGH);
+		SPI.begin ();
+	}
+
+	virtual void shiftInOut (const byte *out, byte *in, const byte len) {
+		attention ();
+		PsxController::shiftInOut(out, in, len);
+		noAttention ();
+		delay (1);
+	}
 };

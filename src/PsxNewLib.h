@@ -441,7 +441,7 @@ protected:
 		}
 		Serial.println ();
 
-		Serial.print (F("--> "));
+		Serial.print (F("-->                            "));
 		for (byte i = 0; i < len; ++i) {
 			if (inbuf[i] < 0x10)
 				Serial.print (0);
